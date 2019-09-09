@@ -127,6 +127,10 @@ publishing {
   }
   repositories {
     maven {
+      credentials {
+        username ossrhUsername
+        password ossrhPassword
+      }
       // change URLs to point to your repos, e.g. http://my.org/repo
       def releasesRepoUrl = "https://nexus.cosium.dev/repository/maven-releases/"
       def snapshotsRepoUrl = "https://nexus.cosium.dev/repository/maven-snapshots/"
