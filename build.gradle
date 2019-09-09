@@ -6,7 +6,7 @@ apply plugin: 'maven-publish'
 
 group = 'com.fazecast'
 archivesBaseName = 'jSerialComm'
-version = '2.5.2.cos-fork.0'
+version = '2.5.2.cos-fork.1'
 ext.moduleName = 'com.fazecast.jSerialComm'
 
 assert hasProperty('java6Home'): "Set the property 'java6Home' in your gradle.properties file pointing to a Java 6 JDK installation"
