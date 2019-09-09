@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'osgi'
+apply plugin: 'maven-publish'
 
 group = 'com.fazecast'
 archivesBaseName = 'jSerialComm'
@@ -113,4 +114,23 @@ task sourcesJar(type: Jar) {
 
 artifacts {
   archives jar, javadocJar, sourcesJar, testJar
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = 'jSerialComm'
+      from components.java
+      artifact sourcesJar
+      artifact javadocJar
+    }
+  }
+  repositories {
+    maven {
+      // change URLs to point to your repos, e.g. http://my.org/repo
+      def releasesRepoUrl = "https://nexus.cosium.dev/repository/maven-releases/"
+      def snapshotsRepoUrl = "https://nexus.cosium.dev/repository/maven-snapshots/"
+      url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+    }
+  }
 }
